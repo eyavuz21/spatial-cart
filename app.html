@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#ffffff" />
-  <title>SpatialCart — Shopping Route Optimizer</title>
+  <title>SpatialCart: shopping route optimizer</title>
 
   <!-- Auth gate: must be signed in to use the app -->
   <script>
@@ -41,7 +41,7 @@
 
   <style>
     html, body { background: #ffffff; -webkit-tap-highlight-color: transparent; }
-    /* Light theme — let the OSM tiles render naturally, just a touch softer */
+    /* Light theme: let the OSM tiles render naturally, just a touch softer */
     .leaflet-tile-pane { filter: saturate(0.92) brightness(1.02); }
     .leaflet-container { background: #e8eef5; font-family: inherit; }
     .leaflet-control-attribution { background: rgba(255,255,255,0.82) !important; color: #64748b !important; }
@@ -115,7 +115,7 @@
 
         <form id="addForm" class="flex gap-2">
           <input id="itemInput" type="text" autocomplete="off" inputmode="text"
-            placeholder="Add an item — e.g. oat milk"
+            placeholder="Add an item, e.g. oat milk"
             class="flex-1 rounded-xl bg-ink-700 border border-ink-600 px-4 py-3 text-sm placeholder-gray-600
                    focus:outline-none focus:border-neon-lime/60 focus:ring-2 focus:ring-neon-lime/20 transition" />
           <button type="submit" aria-label="Add item"
@@ -230,7 +230,7 @@
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
           </div>
-          <p class="text-xs text-gray-500 mb-5">Upload a photo of your receipt to earn loyalty points. (Mockup — no data is sent.)</p>
+          <p class="text-xs text-gray-500 mb-5">Upload a photo of your receipt to earn loyalty points. (Mockup, no data is sent.)</p>
 
           <!-- upload dropzone -->
           <label id="dropzone" for="receiptFile"
@@ -277,7 +277,7 @@
               <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
           </div>
-          <p class="text-xs text-gray-500 mb-5">Snap a photo of a handwritten or printed list — we’ll read the items and add them to your basket. (Mockup — no data is sent.)</p>
+          <p class="text-xs text-gray-500 mb-5">Snap a photo of a handwritten or printed list. We’ll read the items and add them to your basket. (Mockup, no data is sent.)</p>
 
           <label id="listDropzone" for="listFile"
             class="block cursor-pointer rounded-2xl border-2 border-dashed border-ink-600 hover:border-neon-violet/50
@@ -314,7 +314,7 @@
 
   <script>
   /* ============================================================
-     SpatialCart — client-side logic
+     SpatialCart client-side logic
      ============================================================ */
   (() => {
     'use strict';
@@ -329,12 +329,12 @@
 
     const PRIORITY_INFO = {
       express:   'Minimizes total stops and travel distance. Fastest trip, ignores price differences.',
-      balanced:  'Mathematically optimized trade-off between travel time and cost — maximizes net value (savings minus the cost of detours).',
+      balanced:  'Mathematically optimized trade-off between travel time and cost, maximizing net value (savings minus the cost of detours).',
       scavenger: 'Maximizes absolute financial savings by visiting the cheapest store per item, regardless of distance.',
     };
 
     // ============================================================
-    //  MOCK DATASET — local stores with per-item prices & stock
+    //  MOCK DATASET: local stores with per-item prices & stock
     // ============================================================
     const HOME = { lat: 51.5074, lng: -0.1278, name: 'Home' };
 
@@ -396,7 +396,7 @@
     }
 
     // ============================================================
-    //  CROWDSOURCED RECEIPTS — mock OCR + merge into live dataset
+    //  CROWDSOURCED RECEIPTS: mock OCR + merge into live dataset
     // ============================================================
     // Pool of community-reported storefronts a receipt might introduce.
     const CROWD_STORES = [
@@ -407,7 +407,7 @@
     ];
     let crowdIdx = 0;
 
-    // Simulated OCR — returns a parsed receipt matching our schema:
+    // Simulated OCR. Returns a parsed receipt matching our schema:
     //   { timestamp, storeName, location:{lat,lng}, items:[{name,price}] }
     function generateMockReceipt() {
       const names = Object.keys(CATALOG);
@@ -423,7 +423,7 @@
         store = { name: c.name, lat: c.lat, lng: c.lng, color: c.color, isNew: true };
       }
 
-      // Crowdsourced prices skew cheaper (70–95% of base) — makes them matter.
+      // Crowdsourced prices skew cheaper (70–95% of base), which makes them matter.
       const items = picked.map(name => ({
         name,
         price: Math.round(CATALOG[name] * (0.70 + Math.random() * 0.25) * 100) / 100,
@@ -455,7 +455,7 @@
       return { store, isNew };
     }
 
-    // Simulated handwriting/print OCR for a shopping list — returns item names.
+    // Simulated handwriting/print OCR for a shopping list. Returns item names.
     function generateMockShoppingList() {
       const names = Object.keys(CATALOG);
       const n = 4 + Math.floor(Math.random() * 3); // 4–6 items
@@ -587,7 +587,7 @@
     //               minutes, missing[], savings?, baseline?, note? }
     //    each stop = { store, lines:[{name,price}], subtotal, leg, index }
     // ============================================================
-    const SPLIT_THRESHOLD = 5;   // £ — Balanced only splits if it saves more
+    const SPLIT_THRESHOLD = 5;   // £. Balanced only splits if it saves more
     const MIN_PER_KM = 4;        // travel-time model
     const MIN_PER_STOP = 8;      // shopping time per store
 
@@ -646,7 +646,7 @@
       return buildResult('scavenger', stops, missing);
     }
 
-    // ---- BALANCED: Pareto compromise — cheapest single store vs. the best
+    // ---- BALANCED: Pareto compromise: cheapest single store vs. the best
     //      2-store split, taking the split only if it clears the £ threshold ----
     function solveBalanced(items) {
       const singles = STORES
@@ -664,15 +664,15 @@
         const savings = single.cost - split.cost;
         if (savings >= SPLIT_THRESHOLD) {
           return buildResult('balanced', orderStops(split.stops), [], {
-            note: `2-store split saves £${savings.toFixed(2)} vs. the cheapest single store (£${single.cost.toFixed(2)}) — above the £${SPLIT_THRESHOLD} threshold.`
+            note: `2-store split saves £${savings.toFixed(2)} vs. the cheapest single store (£${single.cost.toFixed(2)}), above the £${SPLIT_THRESHOLD} threshold.`
           });
         }
-        return singleResult(`Single store wins — a 2-store split would save only £${Math.max(0, savings).toFixed(2)}, below the £${SPLIT_THRESHOLD} threshold.`);
+        return singleResult(`Single store wins: a 2-store split would save only £${Math.max(0, savings).toFixed(2)}, below the £${SPLIT_THRESHOLD} threshold.`);
       }
       if (single) return singleResult('No worthwhile 2-store split found; using the cheapest single store.');
       if (split)  return buildResult('balanced', orderStops(split.stops), [], { note: 'No single store stocks everything; using the best nearby 2-store combination.' });
 
-      // Nothing within 2 stores can cover the list — fall back to Scavenger.
+      // Nothing within 2 stores can cover the list, so fall back to Scavenger.
       const sc = solveScavenger(items);
       if (sc.feasible) sc.note = 'List needs more than 2 stores; fell back to a Scavenger-style route.';
       return sc;
@@ -958,7 +958,7 @@
                 </div>`).join('')}
             </div>
           </div>
-          <p class="text-[11px] text-gray-500 leading-relaxed">These prices now feed the optimizer — run “Optimize Route” to see them applied.</p>
+          <p class="text-[11px] text-gray-500 leading-relaxed">These prices now feed the optimizer. Run “Optimize Route” to see them applied.</p>
         </div>`;
     }
 
@@ -1056,7 +1056,7 @@
     }
 
     // ============================================================
-    //  LIVE LOCATION — follow the shopper as they travel
+    //  LIVE LOCATION: follow the shopper as they travel
     // ============================================================
     let watchId = null, meMarker = null, accCircle = null, meCentered = false, lastRoute = null;
 
@@ -1067,7 +1067,7 @@
       watchId = navigator.geolocation.watchPosition(onPos, onPosErr, {
         enableHighAccuracy: true, maximumAge: 2000, timeout: 15000,
       });
-      toast('Live location on — your dot follows you as you travel');
+      toast('Live location on. Your dot follows you as you travel');
     }
     function stopTracking() {
       if (watchId != null) navigator.geolocation.clearWatch(watchId);

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#ffffff" />
-  <title>SpatialCart — Carol's 5-Month Journey</title>
+  <title>SpatialCart: Carol's 5-month journey</title>
 
   <!-- Auth gate: must be signed in -->
   <script>
@@ -126,7 +126,7 @@
         </div>
         <p class="mt-2 text-xs text-slate-500 leading-relaxed">
           Carol's savings curve steepens as she leans on <span class="text-blue-700 font-medium">Balanced</span> and
-          <span class="text-blue-700 font-medium">Scavenger</span> routes — the more she shops, the more the optimizer learns the local price map.
+          <span class="text-blue-700 font-medium">Scavenger</span> routes. The more she shops, the more the optimizer learns the local price map.
         </p>
       </section>
 
@@ -155,7 +155,7 @@
         <h3 class="text-sm font-semibold text-slate-700 mb-3">Where the money went</h3>
         <div class="rounded-2xl bg-white border border-slate-200 p-4 space-y-3 shadow-sm" id="storeBars"></div>
         <p class="mt-2 text-xs text-slate-500 leading-relaxed">
-          <span class="text-blue-800 font-semibold">ValueDepot</span> and <span class="text-blue-600 font-semibold">MegaSaver</span> — the two cheapest stores — captured most of Carol's basket, exactly as the optimizer intended.
+          <span class="text-blue-800 font-semibold">ValueDepot</span> and <span class="text-blue-600 font-semibold">MegaSaver</span>, the two cheapest stores, captured most of Carol's basket, exactly as the optimizer intended.
         </p>
       </section>
 
@@ -179,7 +179,7 @@
             <div class="text-[10px] uppercase tracking-wide text-slate-500 mt-0.5">Scavenger</div>
           </div>
         </div>
-        <p class="mt-2 text-xs text-slate-500 leading-relaxed">Balanced was her default — best value without sending her across town. She switched to Scavenger for big monthly stock-ups.</p>
+        <p class="mt-2 text-xs text-slate-500 leading-relaxed">Balanced was her default: best value without sending her across town. She switched to Scavenger for big monthly stock-ups.</p>
       </section>
 
       <!-- ---- COMMUNITY CONTRIBUTION ---- -->
@@ -199,7 +199,7 @@
               <div class="text-[11px] text-slate-500">new stores she put on the map</div>
             </div>
           </div>
-          <p class="mt-3 text-xs text-slate-500 leading-relaxed">Every receipt she scanned updated live prices for shoppers near her — and earned her 50 points a pop.</p>
+          <p class="mt-3 text-xs text-slate-500 leading-relaxed">Every receipt she scanned updated live prices for shoppers near her, and earned her 50 points a pop.</p>
         </div>
       </section>
 
@@ -240,7 +240,7 @@
     'use strict';
 
     // ============================================================
-    //  CAROL — deterministic 5-month dataset (Jan–May 2026)
+    //  CAROL: deterministic 5-month dataset (Jan–May 2026)
     // ============================================================
     const MONTHS = ['Jan','Feb','Mar','Apr','May'];
     const SPEND    = [142, 188, 210, 176, 243];
@@ -260,15 +260,15 @@
 
     const TIMELINE = [
       { m:'14 Jan', c:'#1e3a8a', title:'First optimized trip',
-        body:'Carol tries SpatialCart for a 9-item shop. Balanced mode sends her to ValueDepot + FreshCorner — she saves £6.40 on day one.' },
+        body:'Carol tries SpatialCart for a 9-item shop. Balanced mode sends her to ValueDepot + FreshCorner, saving £6.40 on day one.' },
       { m:'Feb', c:'#1d4ed8', title:'Builds the habit',
         body:'Four trips this month. She starts scanning receipts for points and notices prices around her getting more accurate.' },
       { m:'Mar', c:'#2563eb', title:'Goes Scavenger for the big stock-up',
         body:'A large monthly shop in Scavenger mode hits her best-ever single-trip saving: £18.40 across three stores.' },
       { m:'Apr', c:'#3b82f6', title:'Adds a store to the map',
-        body:'Her scanned receipt from Corner Co-op puts a brand-new vendor on the community price map — used by shoppers nearby within days.' },
+        body:'Her scanned receipt from Corner Co-op puts a brand-new vendor on the community price map, used by shoppers nearby within days.' },
       { m:'May', c:'#60a5fa', title:'Best month yet',
-        body:'Six trips, £71 saved. Cumulative savings cross £200 — and SpatialCart projects £545 over a full year.' },
+        body:'Six trips, £71 saved. Cumulative savings cross £200, and SpatialCart projects £545 over a full year.' },
     ];
 
     // ============================================================
@@ -288,7 +288,7 @@
     }
 
     // ============================================================
-    //  LINE CHART — cumulative savings
+    //  LINE CHART: cumulative savings
     // ============================================================
     function buildLine() {
       const W = 320, H = 150, pad = { l: 8, r: 8, t: 12, b: 8 };
@@ -317,7 +317,7 @@
     }
 
     // ============================================================
-    //  BAR CHART — monthly spend vs baseline (grouped)
+    //  BAR CHART: monthly spend vs baseline (grouped)
     // ============================================================
     function buildBars() {
       const max = Math.max(...BASELINE);
@@ -338,7 +338,7 @@
     }
 
     // ============================================================
-    //  STORE BARS — share of spend
+    //  STORE BARS: share of spend
     // ============================================================
     function buildStoreBars() {
       const max = Math.max(...STORES.map(s => s.spend));
