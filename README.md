@@ -2,7 +2,7 @@
 
 **Plans the cheapest practical shopping route across the real supermarkets around you, then tracks every pound you save.**
 
-**🔴 Live demo: <https://spatialcart.up.railway.app>**
+**🔴 Live demo: <https://eyavuz21.github.io/SpatialCart/>**
 
 ![SpatialCart landing page](docs/screenshot.png)
 
